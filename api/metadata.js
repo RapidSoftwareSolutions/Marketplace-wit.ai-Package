@@ -1,7 +1,7 @@
 module.exports.do = function(req, res){
     /* When sending GET request to api/Twitter, return the metadata of the package */
     res.status(200).send({
-        'package': 'Wit.ai',
+        'package': 'WitAI',
         "tagline": "Wit.ai API Package",
         "description": "Wit.ai makes it easy for developers to build applications and devices that you can talk or text to.",
         'image': 'https://img.stackshare.io/service/767/Qe0MWT5x.png',
