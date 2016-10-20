@@ -1,68 +1,75 @@
-const _       = require('../lib/functions');
-const request = require('request');
+'use strict';
+
+const _           = require('../lib/functions')
+const initStripe  = require('stripe');
+
 
 module.exports = (req, res) => {
 
-    /* Get user parameters and prepare it */
-
-    let r = { callback: "", contextWrites: {} };
+    req.body.args = _.clearArgs(req.body.args);
 
     let { 
-        accessToken,
-        id,
+        apiKey,
+        amount,
+        currency,
+        applicationFee,
+        capture,
         description,
-        values,
-        lookups,
-        to="to",
-    } 
-        = req.body.args;
+        metadata,
+        receiptEmail,
+        customer,
+        source,
+        statementDescriptor,
+        to="to" 
+     } = req.body.args;
 
-    if(!accessToken || !id) {
+    let r  = {
+        callback     : "",
+        contextWrites: {}
+    };
+
+    if(!apiKey || !amount || !currency) {
         _.echoBadEnd(r, to, res);
         return;
     }
 
+    if(metadata)
     try {
-        if(values)  values = JSON.parse(values);
-        if(lookups) lookups = JSON.parse(lookups);
+        metadata = JSON.parse(metadata)
     } catch(e) {
-        r.contextWrites[to] = 'Invaid JSON data';
+        r.contextWrites[to] = 'Invalid JSON value.';
         r.callback = 'error';
 
         res.status(200).send(r);
         return;
     }
 
-    let query = _.clearArgs({
-        id,
-        values,
-        lookups,
-        doc: description
-    });
- 
-    request({
-        method: 'POST',
-        url: 'https://api.wit.ai/entities',
-        //qs: query,
-        headers: {
-            'Authorization': `Bearer ${accessToken}`,
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(query)
-    },
-    (err, response, body) => {
-        if(err || response.statusCode !== 200) {
-            r.contextWrites[to] = body || JSON.stringify(err);
-            r.callback = 'error';
+    let stripe = initStripe(apiKey);
 
-            res.status(200).send(r);
-            return;
+    let options = {
+        amount: amount,
+        currency: currency,
+        capture: capture == 'false' ? false : true,
+        description: description,
+        metadata: metadata,
+        receipt_email: receiptEmail,
+        customer: customer,
+        source: source,
+        statement_descriptor: statementDescriptor,
+        application_fee: applicationFee
+    };
+
+    options = _.clearArgs(options);
+
+    stripe.charges.create(options, function(err, result) {
+        if(!err) {
+            r.contextWrites[to] = JSON.stringify(result);
+            r.callback = 'success'; 
+        } else {
+            r.contextWrites[to] = err.raw.message;
+            r.callback = 'error';
         }
 
-        r.contextWrites[to] = body;
-        r.callback = 'success';
-
         res.status(200).send(r);
-    });
-};
+    });    
+}
