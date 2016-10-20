@@ -43,7 +43,7 @@ module.exports = (req, res) => {
     request({
         method: 'POST',
         url: 'https://api.wit.ai/entities',
-        qs: query,
+        //qs: query,
         headers: {
             'Authorization': `Bearer ${accessToken}`,
             'Accept': 'application/json',
