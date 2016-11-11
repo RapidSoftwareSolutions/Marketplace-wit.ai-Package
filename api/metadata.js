@@ -163,12 +163,12 @@ module.exports.do = function(req, res){
                 {
                     name: "values",
                     type: "JSON",
-                    info: "Possible values for this entity",
+                    info: "Array of JSON objects. Possible values for this entity",
                 },
                 {
                     name: "lookups",
                     type: "JSON",
-                    info: "Currently only supporting “trait” or “keywords” Search Strategy. If not provided, it will default to “keywords”.Traits are only available for new Bot Engine apps",
+                    info: "JSON array of strings. Currently only supporting “trait” or “keywords” Search Strategy. If not provided, it will default to “keywords”.Traits are only available for new Bot Engine apps",
                 },
             ],
             'callbacks':[
@@ -233,7 +233,7 @@ module.exports.do = function(req, res){
                 {
                     name: "values",
                     type: "JSON",
-                    info: "Possible values for this entity"
+                    info: "Array of JSON objects. Possible values for this entity"
                 },
             ],
             'callbacks':[
