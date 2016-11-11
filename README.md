@@ -72,7 +72,7 @@ Returns what your bot should do next. The next step can be either answering to t
 | accessToken| credentials| The api key obtained from WitAi.
 | sessionId  | String     | The session_id is a unique ID you generate on your side to group messages from the same user request/conversation. When you start a new conversation, you should generate a new one. You should generate a new one, even when the user is the same.
 | text       | String     | A message from the user. Length must be > 0 and < 256. This should only be set at the first call until you get type=”stop”
-| context    | JSON       | The object representing the session state.
+| context    | JSON       | The object representing the session state. JSON object.
 
 #### Request example
 ```json
@@ -101,8 +101,8 @@ Creates a new entity with the given attributes.
 | accessToken| credentials| The api key obtained from WitAi.
 | id         | String     | ID or name of the requested entity
 | description| String     | Short sentence describing this entity
-| values     | JSON       | Possible values for this entity
-| lookups    | JSON       | Currently only supporting “trait” or “keywords” Search Strategy. If not provided, it will default to “keywords”.Traits are only available for new Bot Engine apps
+| values     | JSON       | Possible values for this entity. Array of JSON objects.
+| lookups    | JSON       | Currently only supporting “trait” or “keywords” Search Strategy. If not provided, it will default to “keywords”.Traits are only available for new Bot Engine apps. JSON array.
 
 #### Request example
 ```json
@@ -138,13 +138,13 @@ Updates an entity with the given attributes.
 | entityId   | String     | ID or name of the entity.
 | id         | String     | New ID or name of the entity
 | description| String     | Short sentence describing this entity
-| values     | JSON       | Possible values for this entity
+| values     | JSON       | Possible values for this entity. Array of JSON objects.
 
 #### Request example
 ```json
 {	
-	"accessToken": "favorite_city",
-	"entityId": "",
+	"accessToken": "...",
+	"entityId": "favorite_city",
 	"values":[
        {"value":"Paris",
         "expressions":["Paris",
