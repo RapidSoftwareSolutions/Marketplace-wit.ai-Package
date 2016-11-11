@@ -18,11 +18,11 @@ module.exports = (req, res) => {
         = req.body.args;
 
     if(!accessToken || !entityId) {
-        _.echoBadEnd(r, to, res);
+        _.echoBadEnd(r, to, res, 'accessToken, entityId');
         return;
     }
 
-    if(values)  
+    if(values && typeof values == 'string')  
     try {
         values = JSON.parse(values);
     } catch(e) {

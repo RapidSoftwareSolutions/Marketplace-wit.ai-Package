@@ -17,7 +17,7 @@ module.exports = (req, res) => {
         = req.body.args;
 
     if(!accessToken || !text) {
-        _.echoBadEnd(r, to, res);
+        _.echoBadEnd(r, to, res, 'accessToken');
         return;
     }
 

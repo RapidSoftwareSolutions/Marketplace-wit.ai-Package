@@ -18,13 +18,13 @@ module.exports = (req, res) => {
         = req.body.args;
 
     if(!accessToken || !id) {
-        _.echoBadEnd(r, to, res);
+        _.echoBadEnd(r, to, res, 'accessToken, id');
         return;
     }
 
     try {
-        if(values)  values = JSON.parse(values);
-        if(lookups) lookups = JSON.parse(lookups);
+        if(values && typeof values == 'string')  values = JSON.parse(values);
+        if(lookups && typeof lookups == 'string') lookups = JSON.parse(lookups);
     } catch(e) {
         r.contextWrites[to] = 'Invaid JSON data';
         r.callback = 'error';

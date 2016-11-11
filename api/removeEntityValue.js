@@ -16,7 +16,7 @@ module.exports = (req, res) => {
         = req.body.args;
 
     if(!accessToken || !entityId || !entityValue) {
-        _.echoBadEnd(r, to, res);
+        _.echoBadEnd(r, to, res, 'accessToken, entityId, entityValue');
         return;
     }
 
