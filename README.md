@@ -29,10 +29,10 @@ Returns the extracted meaning from a sentence, based on the app data. Note that 
 
 | Field      | Type       | Description
 |------------|------------|----------
-| accessToken| credentials| The api key obtained from WitAi.
-| text       | String     | User’s query. Length must be > 0 and < 256
-| textId     | String     | A specific Id you want to assign to the message that will be processed. If not set, Wit.ai will auto generate one for you
-| threadId   | String     | A specific Id that will let you group requests per conversation
+| accessToken| credentials| Required: The api key obtained from WitAi.
+| text       | String     | Required: User’s query. Length must be > 0 and < 256
+| textId     | String     | Optional: A specific Id you want to assign to the message that will be processed. If not set, Wit.ai will auto generate one for you
+| threadId   | String     | Optional: A specific Id that will let you group requests per conversation
 
 #### Request example
 ```json
@@ -49,11 +49,11 @@ Returns the meaning extracted from an audio file or stream. We do recommend you 
 
 | Field         | Type       | Description
 |---------------|------------|----------
-| accessToken   | credentials| The api key obtained from WitAi.
-| data          | String     | Link to `wav` or `mpeg3` or `ulaw` or `raw` audio file.
-| textId        | String     | A specific Id you want to assign to the message that will be processed. If not set, Wit.ai will auto generate one for you
-| threadId      | String     | A specific Id that will let you group requests per conversation
-| outcomesNumber| String     | The number of n-best outcomes you want to get back. default is 1
+| accessToken   | credentials| Required: The api key obtained from WitAi.
+| data          | String     | Required: Link to `wav` or `mpeg3` or `ulaw` or `raw` audio file.
+| textId        | String     | Optional: A specific Id you want to assign to the message that will be processed. If not set, Wit.ai will auto generate one for you
+| threadId      | String     | Optional: A specific Id that will let you group requests per conversation
+| outcomesNumber| String     | Optional: The number of n-best outcomes you want to get back. default is 1
 
 #### Request example
 ```json
@@ -69,10 +69,10 @@ Returns what your bot should do next. The next step can be either answering to t
 
 | Field      | Type       | Description
 |------------|------------|----------
-| accessToken| credentials| The api key obtained from WitAi.
-| sessionId  | String     | The session_id is a unique ID you generate on your side to group messages from the same user request/conversation. When you start a new conversation, you should generate a new one. You should generate a new one, even when the user is the same.
-| text       | String     | A message from the user. Length must be > 0 and < 256. This should only be set at the first call until you get type=”stop”
-| context    | JSON       | The object representing the session state. JSON object.
+| accessToken| credentials| Required: The api key obtained from WitAi.
+| sessionId  | String     | Required: The session_id is a unique ID you generate on your side to group messages from the same user request/conversation. When you start a new conversation, you should generate a new one. You should generate a new one, even when the user is the same.
+| text       | String     | Optional: A message from the user. Length must be > 0 and < 256. This should only be set at the first call until you get type=”stop”
+| context    | JSON       | Optional: The object representing the session state. JSON object.
 
 #### Request example
 ```json
@@ -89,7 +89,7 @@ Returns a list of available entities for the app.
 
 | Field      | Type       | Description
 |------------|------------|----------
-| accessToken| credentials| The api key obtained from WitAi.
+| accessToken| credentials| Required: The api key obtained from WitAi.
 
 
 <a name="createEntity"/>
@@ -98,11 +98,11 @@ Creates a new entity with the given attributes.
 
 | Field      | Type       | Description
 |------------|------------|----------
-| accessToken| credentials| The api key obtained from WitAi.
-| id         | String     | ID or name of the requested entity
-| description| String     | Short sentence describing this entity
-| values     | JSON       | Possible values for this entity. Array of JSON objects.
-| lookups    | JSON       | Currently only supporting “trait” or “keywords” Search Strategy. If not provided, it will default to “keywords”.Traits are only available for new Bot Engine apps. JSON array.
+| accessToken| credentials| Required: The api key obtained from WitAi.
+| id         | String     | Required: ID or name of the requested entity
+| description| String     | Optional: Short sentence describing this entity
+| values     | JSON       | Optional: Possible values for this entity. Array of JSON objects.
+| lookups    | JSON       | Optional: Currently only supporting “trait” or “keywords” Search Strategy. If not provided, it will default to “keywords”.Traits are only available for new Bot Engine apps. JSON array.
 
 #### Request example
 ```json
@@ -124,8 +124,8 @@ Returns all the expressions validated for an entity. We currently limit to the f
 
 | Field      | Type       | Description
 |------------|------------|----------
-| accessToken| credentials| The api key obtained from WitAi.
-| entityId   | String     | ID or name of the entity.
+| accessToken| credentials| Required: The api key obtained from WitAi.
+| entityId   | String     | Required: ID or name of the entity.
 
 <a name="updateEntityValues"/>
 ## WitAi.updateEntityValues
@@ -134,11 +134,11 @@ Updates an entity with the given attributes.
 
 | Field      | Type       | Description
 |------------|------------|----------
-| accessToken| credentials| The api key obtained from WitAi.
-| entityId   | String     | ID or name of the entity.
-| id         | String     | New ID or name of the entity
-| description| String     | Short sentence describing this entity
-| values     | JSON       | Possible values for this entity. Array of JSON objects.
+| accessToken| credentials| Required: The api key obtained from WitAi.
+| entityId   | String     | Required: ID or name of the entity.
+| id         | String     | Optional: New ID or name of the entity
+| description| String     | Optional: Short sentence describing this entity
+| values     | JSON       | Optional: Possible values for this entity. Array of JSON objects.
 
 #### Request example
 ```json
@@ -165,8 +165,8 @@ Permanently remove the entity.
 
 | Field      | Type       | Description
 |------------|------------|----------
-| accessToken| credentials| The api key obtained from WitAi.
-| entityId   | String     | ID or name of the entity.
+| accessToken| credentials| Required: The api key obtained from WitAi.
+| entityId   | String     | Required: ID or name of the entity.
 
 <a name="addEntityValues"/>
 ## WitAi.addEntityValues
@@ -174,11 +174,11 @@ Add a possible value into the list of values for the entity.
 
 | Field      | Type       | Description
 |------------|------------|----------
-| accessToken| credentials| The api key obtained from WitAi.
-| entityId   | String     | ID or name of the entity.
-| value      | String     | Canonical value of the entity
-| expressions| JSON       | Ways of expressing this canonical value (JSON array)
-| metadata   | String     | Metadata you want to attach to this value, will be sent back in runtime.
+| accessToken| credentials| Required: The api key obtained from WitAi.
+| entityId   | String     | Required: ID or name of the entity.
+| value      | String     | Required: Canonical value of the entity
+| expressions| JSON       | Optional: Ways of expressing this canonical value (JSON array)
+| metadata   | String     | Optional: Metadata you want to attach to this value, will be sent back in runtime.
 
 #### Request example
 ```json
@@ -197,9 +197,9 @@ Delete a canonical value from the entity.
 
 | Field      | Type       | Description
 |------------|------------|----------
-| accessToken| credentials| The api key obtained from WitAi.
-| entityId   | String     | ID or name of the entity.
-| entityValue| String     | Canonical value of the entity
+| accessToken| credentials| Required: The api key obtained from WitAi.
+| entityId   | String     | Required: ID or name of the entity.
+| entityValue| String     | Required: Canonical value of the entity
 
 <a name="createEntityExpression"/>
 ## WitAi.createEntityExpression
@@ -207,10 +207,10 @@ Create a new expression for an entity
 
 | Field      | Type       | Description
 |------------|------------|----------
-| accessToken| credentials| The api key obtained from WitAi.
-| entityId   | String     | ID or name of the entity.
-| entityValue| String     | Canonical value of the entity
-| expression | String     | New expression for the canonical value of the entity. Must be shorter than 256 characters.
+| accessToken| credentials| Required: The api key obtained from WitAi.
+| entityId   | String     | Required: ID or name of the entity.
+| entityValue| String     | Required: Canonical value of the entity
+| expression | String     | Required: New expression for the canonical value of the entity. Must be shorter than 256 characters.
 
 <a name="removeExpression"/>
 ## WitAi.removeExpression
@@ -218,10 +218,10 @@ Delete an expression of the canonical value of the entity.
 
 | Field          | Type       | Description
 |----------------|------------|----------
-| accessToken    | credentials| The api key obtained from WitAi.
-| entityId       | String     | ID or name of the entity.
-| entityValue    | String     | Canonical value of the entity
-| expressionValue| String     | Expression value to delete.
+| accessToken    | credentials| Required: The api key obtained from WitAi.
+| entityId       | String     | Required: ID or name of the entity.
+| entityValue    | String     | Required: Canonical value of the entity
+| expressionValue| String     | Required: Expression value to delete.
 
 #### Request example
 ```json
