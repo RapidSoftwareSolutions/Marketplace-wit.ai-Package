@@ -91,11 +91,6 @@ Returns a list of available entities for the app.
 |------------|------------|----------
 | accessToken| credentials| The api key obtained from WitAi.
 
-#### Request example
-```json
-{	"accessToken": "..."
-}
-```
 
 <a name="createEntity"/>
 ## WitAi.createEntity
@@ -131,14 +126,6 @@ Returns all the expressions validated for an entity. We currently limit to the f
 |------------|------------|----------
 | accessToken| credentials| The api key obtained from WitAi.
 | entityId   | String     | ID or name of the entity.
-
-#### Request example
-```json
-{	
-	"accessToken": "...",
-	"entityId": "first_name"
-}
-```
 
 <a name="updateEntityValues"/>
 ## WitAi.updateEntityValues
@@ -181,14 +168,6 @@ Permanently remove the entity.
 | accessToken| credentials| The api key obtained from WitAi.
 | entityId   | String     | ID or name of the entity.
 
-#### Request example
-```json
-{	
-	"accessToken": "...",
-	"entityId": "favorite_city"
-}
-```
-
 <a name="addEntityValues"/>
 ## WitAi.addEntityValues
 Add a possible value into the list of values for the entity.
@@ -222,15 +201,6 @@ Delete a canonical value from the entity.
 | entityId   | String     | ID or name of the entity.
 | entityValue| String     | Canonical value of the entity
 
-#### Request example
-```json
-{	
-	"accessToken": "...",
-	"entityId": "favorite_city",
-	"entityValue": "Paris"
-}
-```
-
 <a name="createEntityExpression"/>
 ## WitAi.createEntityExpression
 Create a new expression for an entity
@@ -241,16 +211,6 @@ Create a new expression for an entity
 | entityId   | String     | ID or name of the entity.
 | entityValue| String     | Canonical value of the entity
 | expression | String     | New expression for the canonical value of the entity. Must be shorter than 256 characters.
-
-#### Request example
-```json
-{	
-	"accessToken": "...",
-	"entityId": "favorite_city",
-	"entityValue": "Paris",
-	"expression": "Camembert city"
-}
-```
 
 <a name="removeExpression"/>
 ## WitAi.removeExpression
