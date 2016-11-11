@@ -9,10 +9,11 @@ let accessToken = 'Y7QMZJIJIUYTQWO2DLK6RVAHQAAOTF7R',
     data = 'http://www.externalharddrive.com/waves/animal/cow.wav',
     textId = '8156ed17-46ee-462b-8220-4029cdf3d7fe',
     sessionId = '1234',
-    id = 'hey',
-    newid = 'yo',
+    id = 'hey' +  Date.now(),
+    newid = 'yo' +  Date.now(),
     value = '123',
-    expression = '321';
+    expression = '321',
+    entityId;
 
 describe('/Wit.ai Package', function() {
     it('/getSentenceMeaning', function() {
@@ -28,7 +29,7 @@ describe('/Wit.ai Package', function() {
     });
 
     it('/getAudioMeaning', function() {
-        this.timeout(10000);
+        this.timeout(30000);
 
         return request(app)
         .post('/api/'+ global.PACKAGE_NAME +'/getAudioMeaning')
@@ -63,63 +64,73 @@ describe('/Wit.ai Package', function() {
         });
     });
 
-    it('/createEntity', function() {
-        this.timeout(10000);
+    it('/createEntity', function(done) {
+        this.timeout(100000);
 
         return request(app)
         .post('/api/'+ global.PACKAGE_NAME +'/createEntity')
         .send({args: { accessToken, id }})
         .expect(200)
         .then((data) => {
+            entityId = JSON.parse(data.body.contextWrites.to)['id'];
             assert.equal(data.body.callback, 'success');
+
+            setTimeout(done, 10000);
         });
     });
 
     it('/getEntityValues', function() {
         this.timeout(10000);
-
-        return request(app)
-        .post('/api/'+ global.PACKAGE_NAME +'/getEntityValues')
-        .send({args: { accessToken, entityId: id }})
-        .expect(200)
-        .then((data) => {
-            assert.equal(data.body.callback, 'success');
-        });
+        //setTimeout(function() {
+            return request(app)
+            .post('/api/'+ global.PACKAGE_NAME +'/getEntityValues')
+            .send({args: { accessToken, entityId }})
+            .expect(200)
+            .then((data) => {
+                assert.equal(data.body.callback, 'success');
+            });
+        //}, 3000);
     });
 
-    it('/updateEntityValues', function() {
-        this.timeout(10000);
-
-        return request(app)
-        .post('/api/'+ global.PACKAGE_NAME +'/updateEntityValues')
-        .send({args: { accessToken, entityId: id, id: newid }})
-        .expect(200)
-        .then((data) => {
-            assert.equal(data.body.callback, 'success');
-        });
-    });
-
-    it('/addEntityValues', function() {
+    it('/addEntityValues', function(done) {
         this.timeout(10000);
 
         return request(app)
         .post('/api/'+ global.PACKAGE_NAME +'/addEntityValues')
-        .send({args: { accessToken, entityId: newid, value }})
+        .send({args: { accessToken, entityId, value }})
         .expect(200)
         .then((data) => {
             assert.equal(data.body.callback, 'success');
+            setTimeout(done, 3000);
+        });
+    });
+    
+
+    it('/updateEntityValues', function(done) {
+        this.timeout(100000);
+
+        return request(app)
+        .post('/api/'+ global.PACKAGE_NAME +'/updateEntityValues')
+        .send({args: { accessToken, entityId, id: newid }})
+        .expect(200)
+        .then((data) => {
+            entityId = JSON.parse(data.body.contextWrites.to)['id'];
+            setTimeout(done, 10000);
+            //assert.equal(data.body.callback, 'success');
         });
     });
 
-    it('/createEntityExpression', function() {
+    it('/createEntityExpression', function(done) {
         this.timeout(10000);
 
         return request(app)
         .post('/api/'+ global.PACKAGE_NAME +'/createEntityExpression')
-        .send({args: { accessToken, entityId: newid, entityValue: value, expression }})
+        .send({args: { accessToken, entityId, entityValue: value, expression }})
         .expect(200)
         .then((data) => {
             assert.equal(data.body.callback, 'success');
+
+            setTimeout(done, 3000);
         });
     });
 
@@ -128,7 +139,7 @@ describe('/Wit.ai Package', function() {
 
         return request(app)
         .post('/api/'+ global.PACKAGE_NAME +'/removeExpression')
-        .send({args: { accessToken, entityId: newid, entityValue: value, expressionValue: expression }})
+        .send({args: { accessToken, entityId, entityValue: value, expressionValue: expression }})
         .expect(200)
         .then((data) => {
             assert.equal(data.body.callback, 'success');
@@ -140,7 +151,7 @@ describe('/Wit.ai Package', function() {
 
         return request(app)
         .post('/api/'+ global.PACKAGE_NAME +'/removeEntityValue')
-        .send({args: { accessToken, entityId: newid, entityValue: value }})
+        .send({args: { accessToken, entityId, entityValue: value }})
         .expect(200)
         .then((data) => {
             assert.equal(data.body.callback, 'success');
@@ -152,7 +163,7 @@ describe('/Wit.ai Package', function() {
 
         return request(app)
         .post('/api/'+ global.PACKAGE_NAME +'/deleteEntity')
-        .send({args: { accessToken, entityId: newid }})
+        .send({args: { accessToken, entityId }})
         .expect(200)
         .then((data) => {
             assert.equal(data.body.callback, 'success');

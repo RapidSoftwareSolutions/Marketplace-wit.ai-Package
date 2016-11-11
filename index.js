@@ -6,7 +6,7 @@ const express       = require('express'),
     fs              = require('fs');
 
 const PORT          = process.env.PORT || 8080;
-global.PACKAGE_NAME = "wit.ai";
+global.PACKAGE_NAME = "WitAI";
 
 const app = express();
 app.use(bodyParser.json(({limit: '50mb'})));
