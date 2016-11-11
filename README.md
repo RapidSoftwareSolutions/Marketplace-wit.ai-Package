@@ -207,24 +207,6 @@ Creates a new entity with the given attributes.
     "lookups" : [ "trait" ]
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":   {
-			    "name" : "favorite_city",
-			    "lang" : "en",
-			    "lookups" : [ "keywords" ],
-			    "builtin" : false,
-			    "doc" : "A city that I like",
-			    "id" : "5418abc7-cc68-4073-ae9e-3a5c3c81d965"
-		  	}
-		}
-	}
-}
-```
 
 <a name="getEntityValues"/>
 ## WitAi.getEntityValues
@@ -240,37 +222,6 @@ Returns all the expressions validated for an entity. We currently limit to the f
 {	
 	"accessToken": "...",
 	"entityId": "first_name"
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {
-			  "builtin" : false,
-			  "doc" : "User-defined entity",
-			  "id" : "571979db-f6ac-4820-bc28-a1e0787b98fc",
-			  "lang" : "en",
-			  "lookups" : [ "keywords", "free-text" ],
-			  "name" : "first_name",
-			  "values" : [ {
-			    "value" : "Willy",
-			    "expressions" : [ "Willy" ]
-			  }, {
-			    "value" : "Laurent",
-			    "expressions" : [ "Laurent" ]
-			  }, {
-			    "value" : "Julien",
-			    "expressions" : [ "Julien" ]
-			  }, {
-			    "value" : "Alex",
-			    "expressions" : [ "Alex" ]
-			  } ]
-			}
-		}
-	}
 }
 ```
 
@@ -305,24 +256,6 @@ Updates an entity with the given attributes.
        "metadata":"city_343"}]
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {
-			  "builtin" : false,
-			  "doc" : "These are cities worth going to",
-			  "name" : "favorite_city",
-			  "id" : "5418abc7-cc68-4073-ae9e-3a5c3c81d965",
-			  "lang" : "en",
-			  "lookups" : [ "keywords" ]
-			}
-		}
-	}
-}
-```
 
 <a name="deleteEntity"/>
 ## WitAi.deleteEntity
@@ -338,19 +271,6 @@ Permanently remove the entity.
 {	
 	"accessToken": "...",
 	"entityId": "favorite_city"
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {
-			    "deleted" : "5418abc7-cc68-4073-ae9e-3a5c3c81d965"
-			 }
-		}
-	}
 }
 ```
 
@@ -376,25 +296,6 @@ Add a possible value into the list of values for the entity.
     "metadata": "CITY_1234"
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {
-			  "builtin" : false,
-			  "doc" : "These are cities worth going to",
-			  "exotic" : false,
-			  "id" : "57475251-ba5a-412b-85ec-3ab6f778d6fa",
-			  "lang" : "en",
-			  "lookups" : [ "keywords" ],
-			  "name" : "favorite_city"
-			}
-		}
-	}
-}
-```
 
 <a name="removeEntityValue"/>
 ## WitAi.removeEntityValue
@@ -412,19 +313,6 @@ Delete a canonical value from the entity.
 	"accessToken": "...",
 	"entityId": "favorite_city",
 	"entityValue": "Paris"
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {
-			  "deleted" : "Paris"
-			}
-		}
-	}
 }
 ```
 
@@ -448,25 +336,6 @@ Create a new expression for an entity
 	"expression": "Camembert city"
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {
-			  "builtin" : false,
-			  "doc" : "These are cities worth going to",
-			  "exotic" : false,
-			  "id" : "57475251-ba5a-412b-85ec-3ab6f778d6fa",
-			  "lang" : "en",
-			  "lookups" : [ "keywords" ],
-			  "name" : "favorite_city"
-			}
-		}
-	}
-}
-```
 
 <a name="removeExpression"/>
 ## WitAi.removeExpression
@@ -488,17 +357,3 @@ Delete an expression of the canonical value of the entity.
 	"expressionValue": "Camembert city"
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to": {
-			  "deleted" : "Camembert city"
-			}
-		}
-	}
-}
-```
-
