@@ -41,40 +41,6 @@ Returns the extracted meaning from a sentence, based on the app data. Note that 
 	"text": "how many people between Tuesday and Friday",
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":  {
-		    "msg_id": "387b8515-0c1d-42a9-aa80-e68b66b66c27",
-		    "_text": "how many people between Tuesday and Friday",
-		    "entities": {
-		      "metric": [ {
-		        "metadata": "{'code': 324}",
-		        "value": "metric_visitor",
-		        "confidence": 0.9231
-		      } ],
-		      "datetime": [ {
-		        "value": {
-		          "from": "2014-07-01T00:00:00.000-07:00",
-		          "to": "2014-07-02T00:00:00.000-07:00"
-		        },
-		        "confidence": 1
-		      }, {
-		        "value": {
-		          "from": "2014-07-04T00:00:00.000-07:00",
-		          "to": "2014-07-05T00:00:00.000-07:00"
-		        },
-		        "confidence": 1
-		      } ]
-		    }
-		  }
-		}
-	}
-}
-```
 
 <a name="getAudioMeaning"/>
 ## WitAi.getAudioMeaning
@@ -96,18 +62,6 @@ Returns the meaning extracted from an audio file or stream. We do recommend you 
 	"data": "http://www.externalharddrive.com/waves/animal/cow.wav",
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"..."
-		}
-	}
-}
-```
-
 <a name="getBotNextStep"/>
 ## WitAi.getBotNextStep
 Returns what your bot should do next. The next step can be either answering to the user, performing an action, or waiting for further requests.
@@ -128,27 +82,6 @@ Returns what your bot should do next. The next step can be either answering to t
 	"context": {"loc":"Brussels"}
 }
 ```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":  {
-		    "type": "merge",
-		    "entities": {"location": [{"body": "Brussels",
-		                               "value": {"type": "value",
-		                                         "value": "Brussels",
-		                                         "suggested": true},
-		                               "start": 11,
-		                               "end": 19,
-		                               "entity": "location"}]},
-		    "confidence": 1
-		  }
-		}
-	}
-}
-```
 
 <a name="getEntities"/>
 ## WitAi.getEntities
@@ -161,24 +94,6 @@ Returns a list of available entities for the app.
 #### Request example
 ```json
 {	"accessToken": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":[
-		    "wit$amount_of_money",
-		    "wit$contact",
-		    "wit$datetime",
-		    "wit$on_off",
-		    "wit$phrase_to_translate",
-		    "wit$temperature"
-		  ]
-		}
-	}
 }
 ```
 
