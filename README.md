@@ -59,7 +59,7 @@ Returns the meaning extracted from an audio file or stream. We do recommend you 
 ```json
 {	
 	"accessToken": "...",
-	"data": "http://www.externalharddrive.com/waves/animal/cow.wav",
+	"data": "http://www.wavsource.com/snds_2016-11-20_5768273412148964/people/politics/baker_arduous.wav",
 }
 ```
 <a name="getBotNextStep"/>
