@@ -25,7 +25,10 @@ module.exports = (req, res) => {
         try {
             context = JSON.parse(context);
         } catch(e) {
-            r.contextWrites[to] = 'Invaid JSON data';
+            r.contextWrites[to] = {
+                'status_code': 'JSON_VALIDATION',
+                'status_msg': 'Syntax error. Incorrect input JSON. Please, check fields with JSON input.'
+            };
             r.callback = 'error';
 
             res.status(200).send(r);

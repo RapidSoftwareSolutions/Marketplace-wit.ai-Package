@@ -9,21 +9,7 @@ Wit.ai makes it easy for developers to build applications and devices that you c
 2. Go to app settings https://wit.ai/YOUR_ACCOUNT/YOUR_APP_NAME/settings
 3. Copy and save your _Server Access Token_.
 
-## TOC: 
-* [getSentenceMeaning](#getSentenceMeaning)
-* [getAudioMeaning](#getAudioMeaning)
-* [getBotNextStep](#getBotNextStep)
-* [getEntities](#getEntities)
-* [createEntity](#createEntity)
-* [getEntityValues](#getEntityValues)
-* [updateEntityValues](#updateEntityValues)
-* [deleteEntity](#deleteEntity)
-* [addEntityValues](#addEntityValues)
-* [removeEntityValue](#removeEntityValue)
-* [createEntityExpression](#createEntityExpression)
-* [removeExpression](#removeExpression)
- 
-<a name="getSentenceMeaning"/>
+
 ## WitAi.getSentenceMeaning
 Returns the extracted meaning from a sentence, based on the app data. Note that you may use JSONP to do cross-domain/cross-origin requests.
 
@@ -42,7 +28,7 @@ Returns the extracted meaning from a sentence, based on the app data. Note that 
 }
 ```
 
-<a name="getAudioMeaning"/>
+
 ## WitAi.getAudioMeaning
 Returns the meaning extracted from an audio file or stream. We do recommend you to stream the audio input as it will reduce the latency, hence improve the user experience.
 
@@ -62,7 +48,7 @@ Returns the meaning extracted from an audio file or stream. We do recommend you 
 	"data": "http://www.wavsource.com/snds_2016-11-20_5768273412148964/people/politics/baker_arduous.wav",
 }
 ```
-<a name="getBotNextStep"/>
+
 ## WitAi.getBotNextStep
 Returns what your bot should do next. The next step can be either answering to the user, performing an action, or waiting for further requests.
 
@@ -83,7 +69,7 @@ Returns what your bot should do next. The next step can be either answering to t
 }
 ```
 
-<a name="getEntities"/>
+
 ## WitAi.getEntities
 Returns a list of available entities for the app.
 
@@ -92,7 +78,7 @@ Returns a list of available entities for the app.
 | accessToken| credentials| Required: The api key obtained from WitAi.
 
 
-<a name="createEntity"/>
+
 ## WitAi.createEntity
 Creates a new entity with the given attributes.
 
@@ -118,7 +104,7 @@ Creates a new entity with the given attributes.
 }
 ```
 
-<a name="getEntityValues"/>
+
 ## WitAi.getEntityValues
 Returns all the expressions validated for an entity. We currently limit to the first 1000 values (with the first 50 expressions)
 
@@ -127,7 +113,7 @@ Returns all the expressions validated for an entity. We currently limit to the f
 | accessToken| credentials| Required: The api key obtained from WitAi.
 | entityId   | String     | Required: ID or name of the entity.
 
-<a name="updateEntityValues"/>
+
 ## WitAi.updateEntityValues
 Updates an entity with the given attributes.
 
@@ -159,7 +145,7 @@ Updates an entity with the given attributes.
 }
 ```
 
-<a name="deleteEntity"/>
+
 ## WitAi.deleteEntity
 Permanently remove the entity.
 
@@ -168,7 +154,7 @@ Permanently remove the entity.
 | accessToken| credentials| Required: The api key obtained from WitAi.
 | entityId   | String     | Required: ID or name of the entity.
 
-<a name="addEntityValues"/>
+
 ## WitAi.addEntityValues
 Add a possible value into the list of values for the entity.
 
@@ -191,7 +177,7 @@ Add a possible value into the list of values for the entity.
 }
 ```
 
-<a name="removeEntityValue"/>
+
 ## WitAi.removeEntityValue
 Delete a canonical value from the entity.
 
@@ -201,7 +187,7 @@ Delete a canonical value from the entity.
 | entityId   | String     | Required: ID or name of the entity.
 | entityValue| String     | Required: Canonical value of the entity
 
-<a name="createEntityExpression"/>
+
 ## WitAi.createEntityExpression
 Create a new expression for an entity
 
@@ -212,7 +198,7 @@ Create a new expression for an entity
 | entityValue| String     | Required: Canonical value of the entity
 | expression | String     | Required: New expression for the canonical value of the entity. Must be shorter than 256 characters.
 
-<a name="removeExpression"/>
+
 ## WitAi.removeExpression
 Delete an expression of the canonical value of the entity.
 

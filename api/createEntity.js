@@ -26,7 +26,10 @@ module.exports = (req, res) => {
         if(values && typeof values == 'string')  values = JSON.parse(values);
         if(lookups && typeof lookups == 'string') lookups = JSON.parse(lookups);
     } catch(e) {
-        r.contextWrites[to] = 'Invaid JSON data';
+        r.contextWrites[to] = {
+            'status_code': 'JSON_VALIDATION',
+            'status_msg': 'Syntax error. Incorrect input JSON. Please, check fields with JSON input.'
+        };
         r.callback = 'error';
 
         res.status(200).send(r);
