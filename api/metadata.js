@@ -15,6 +15,7 @@ module.exports.do = function(req, res){
         },
         'blocks': [{
             "name":"getSentenceMeaning",
+            "description": "Returns the extracted meaning from a sentence, based on the app data. Note that you may use JSONP to do cross-domain/cross-origin requests.",
             "args":[
                 {
                     name: "accessToken",
@@ -54,6 +55,7 @@ module.exports.do = function(req, res){
         },
         {
             "name":"getAudioMeaning",
+            "description": "Returns the meaning extracted from an audio file or stream. We do recommend you to stream the audio input as it will reduce the latency, hence improve the user experience.",
             "args":[
                 {
                     name: "accessToken",
@@ -99,6 +101,7 @@ module.exports.do = function(req, res){
         },
         {
             "name":"getBotNextStep",
+            "description": "Returns what your bot should do next. The next step can be either answering to the user, performing an action, or waiting for further requests.",
             "args":[
                 {
                     name: "accessToken",
@@ -138,6 +141,7 @@ module.exports.do = function(req, res){
         },
         {
             "name":"getEntities",
+            "description": "Returns a list of available entities for the app.",
             "args":[
                 {
                     name: "accessToken",
@@ -159,6 +163,7 @@ module.exports.do = function(req, res){
         },
         {
             "name":"createEntity",
+            "description": "Creates a new entity with the given attributes.",
             "args":[
                 {
                     name: "accessToken",
@@ -204,6 +209,7 @@ module.exports.do = function(req, res){
         },
         {
             "name":"getEntityValues",
+            "description": "Returns all the expressions validated for an entity. We currently limit to the first 1000 values (with the first 50 expressions)",
             "args":[
                 {
                     name: "accessToken",
@@ -231,6 +237,7 @@ module.exports.do = function(req, res){
         },
         {
             "name":"updateEntityValues",
+            "description": "Updates an entity with the given attributes.",
             "args":[
                 {
                     name: "accessToken",
@@ -276,6 +283,7 @@ module.exports.do = function(req, res){
         },
         {
             "name":"deleteEntity",
+            "description": "Permanently remove the entity.",
             "args":[
                 {
                     name: "accessToken",
@@ -303,6 +311,7 @@ module.exports.do = function(req, res){
         },
         {
             "name":"addEntityValues",
+            "description": "Add a possible value into the list of values for the entity.",
             "args":[
                 {
                     name: "accessToken",
@@ -348,6 +357,7 @@ module.exports.do = function(req, res){
         },
         {
             "name":"removeEntityValue",
+            "description": "Delete a canonical value from the entity.",
             "args":[
                 {
                     name: "accessToken",
@@ -381,6 +391,7 @@ module.exports.do = function(req, res){
         },
         {
             "name":"createEntityExpression",
+            "description": "Create a new expression for an entity",
             "args":[
                 {
                     name: "accessToken",
@@ -420,6 +431,7 @@ module.exports.do = function(req, res){
         },
         {
             "name":"removeExpression",
+            "description": "Delete an expression of the canonical value of the entity.",
             "args":[
                 {
                     name: "accessToken",
