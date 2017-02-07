@@ -1,3 +1,5 @@
+[![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/WitAI/functions?utm_source=RapidAPIGitHub_WitAIFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
+
 # Wit.ai Package
 Wit.ai makes it easy for developers to build applications and devices that you can talk or text to.
 * Domain: wit.ai
