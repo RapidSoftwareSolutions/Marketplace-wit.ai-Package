@@ -65,7 +65,8 @@ module.exports.do = function(req, res){
                 },
                 {
                     name: "data",
-                    type: "String",
+                    type: "Select",
+                    "options": ["wav","mpeg3","ulaw","raw"],
                     info: "Link to `wav` or `mpeg3` or `ulaw` or `raw` audio file.",
                     required: true
                 },

@@ -12,6 +12,15 @@ Wit.ai makes it easy for developers to build applications and devices that you c
 3. Copy and save your _Server Access Token_.
 
 
+## Custom datatypes:
+ |Datatype|Description|Example
+ |--------|-----------|----------
+ |Datepicker|String which includes date and time|```2016-05-28 00:00:00```
+ |Map|String which includes latitude and longitude coma separated|```50.37, 26.56```
+ |List|Simple array|```["123", "sample"]```
+ |Select|String with predefined values|```sample```
+ |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
+
 ## WitAi.getSentenceMeaning
 Returns the extracted meaning from a sentence, based on the app data. Note that you may use JSONP to do cross-domain/cross-origin requests.
 
@@ -38,7 +47,7 @@ Returns the meaning extracted from an audio file or stream. We do recommend you 
 | Field         | Type       | Description
 |---------------|------------|----------
 | accessToken   | credentials| Required: The api key obtained from WitAi.
-| data          | String     | Required: Link to `wav` or `mpeg3` or `ulaw` or `raw` audio file.
+| data          | Select     | Required: Link to `wav` or `mpeg3` or `ulaw` or `raw` audio file.
 | textId        | String     | Optional: A specific Id you want to assign to the message that will be processed. If not set, Wit.ai will auto generate one for you
 | threadId      | String     | Optional: A specific Id that will let you group requests per conversation
 | outcomesNumber| String     | Optional: The number of n-best outcomes you want to get back. default is 1
