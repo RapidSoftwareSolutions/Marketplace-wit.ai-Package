@@ -47,7 +47,7 @@ Returns the meaning extracted from an audio file or stream. We do recommend you 
 | Field         | Type       | Description
 |---------------|------------|----------
 | accessToken   | credentials| Required: The api key obtained from WitAi.
-| data          | Select     | Required: Link to `wav` or `mpeg3` or `ulaw` or `raw` audio file.
+| data          | String     | Required: Link to `wav` or `mpeg3` or `ulaw` or `raw` audio file.
 | textId        | String     | Optional: A specific Id you want to assign to the message that will be processed. If not set, Wit.ai will auto generate one for you
 | threadId      | String     | Optional: A specific Id that will let you group requests per conversation
 | outcomesNumber| String     | Optional: The number of n-best outcomes you want to get back. default is 1
