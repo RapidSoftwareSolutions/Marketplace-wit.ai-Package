@@ -6,10 +6,10 @@ Wit.ai makes it easy for developers to build applications and devices that you c
 * Credentials: accessToken
 
 ## How to get credentials: 
-0. Login to your [Wit.Ai console](https://wit.ai) 
-1. Choose an app or create a new on my clicking the "+" in the top right corner.
-2. Go to app settings https://wit.ai/YOUR_ACCOUNT/YOUR_APP_NAME/settings
-3. Copy and save your _Server Access Token_.
+1. Login to your [Wit.Ai console](https://wit.ai) 
+2. Choose an app or create a new on my clicking the "+" in the top right corner.
+3. Go to app settings
+4. Copy and save your _Server Access Token_.
 
 
 ## Custom datatypes:
