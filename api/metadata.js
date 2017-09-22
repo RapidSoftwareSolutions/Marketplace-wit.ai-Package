@@ -13,6 +13,12 @@ module.exports.do = function(req, res){
                 'accessToken',
             ]
         },
+        "steps": [
+            "Login to your Wit.Ai console (https://wit.ai/)",
+            "Choose an app or create a new on my clicking the '+' in the top right corner",
+            "Go to app settings",
+            "Copy and save your Server Access Token",
+        ],
         'blocks': [{
             "name":"getSentenceMeaning",
             "description": "Returns the extracted meaning from a sentence, based on the app data. Note that you may use JSONP to do cross-domain/cross-origin requests.",
