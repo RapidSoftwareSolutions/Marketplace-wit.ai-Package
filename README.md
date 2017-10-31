@@ -2,7 +2,7 @@
 
 # Wit.ai Package
 Wit.ai makes it easy for developers to build applications and devices that you can talk or text to.
-* Domain: wit.ai
+* Domain: [Wit.Ai](https://wit.ai) 
 * Credentials: accessToken
 
 ## How to get credentials: 
